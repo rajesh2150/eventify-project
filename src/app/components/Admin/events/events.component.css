@@ -1,0 +1,9 @@
+thead{
+    background-color: rgba(85, 161, 248, 0.925);
+}
+.inactive{
+    background-color: dimgray;
+}
+.active{
+    background-color: white;
+}

@@ -1,0 +1,171 @@
+<!-- <app-organizer-dashboard></app-organizer-dashboard> -->
+<div class="container" *ngIf="selectedEvent">
+    <!-- <form>
+        Search: <input type="text" name="searchText" [(ngModel)]="searchtext">
+        <button class="btn btn-primary" (click)="searchFunction()">Search</button>
+    </form> -->
+    <!-- <form>
+        <form #addEventForm="ngForm">
+            <div>
+                <label for="eventId">Event Id:</label>
+                <input id="eventId" name="eventId" [(ngModel)]="selectedEvent.eventId" required>
+                
+              </div>
+            
+            <div>
+              <label for="eventTitle">Event Name:</label>
+              <input id="eventTitle" name="eventTitle" [(ngModel)]="selectedEvent.eventTitle" required>
+              
+            </div>
+        
+            <!-- <div>
+              <label for="eventStartTime">Event Start Date and Time:</label>
+              <input id="eventStartTime" name="eventStartTime" type="datetime-local" [(ngModel)]="event[0].eventStartTime" required>
+              
+            </div>
+        
+            <div>
+              <label for="eventEndTime">Event End Date and Time:</label>
+              <input id="eventEndTime" name="eventEndTime" type="datetime-local" [(ngModel)]="event[0].eventEndTime" required>
+            
+            </div>
+        
+            <div>
+              <label for="eventLocation">Event Location:</label>
+              <input id="eventLocation" name="eventLocation" [(ngModel)]="selectedEvent.eventLocation" required>
+        
+            </div>
+        
+            <div>
+              <label for="eventPrice">Event Price:</label>
+              <input id="eventPrice" name="eventPrice" [(ngModel)]="selectedEvent.eventPrice" required>
+            </div>
+        
+            <div>
+              <label for="eventType">Event Type:</label>
+              <input id="eventType" name="eventType" [(ngModel)]="selectedEvent.eventType" required>
+        
+            </div>
+        
+            <div>
+              <label for="totalTickets">Total number of Tickets:</label>
+              <input id="totalTickets" name="totalTickets" [(ngModel)]="selectedEvent.totalTickets" required>
+              
+            </div>
+        
+            <div>
+              <label for="eventDescription">Event Description:</label>
+              <textarea id="eventDescription" name="eventDescription" [(ngModel)]="selectedEvent.eventDescription" required></textarea><br><br>
+              
+            </div>
+      
+            <div>
+              <label for="totalReceivedAmount">Event TotalReceivedAmount:</label>
+              <textarea id="totalReceivedAmount" name="totalReceivedAmount" [(ngModel)]="selectedEvent.totalReceivedAmount" required></textarea><br><br>
+              
+            </div>
+      
+      
+        
+            <button class="btn btn-primary" type="submit" [disabled]="addEventForm.form.invalid" (click)="update(selectedEvent)">Update</button>
+          </form>
+    </form> -->
+
+
+    <form #addEventForm="ngForm">
+      <!-- Event ID -->
+      <div>
+          <label for="eventId">Event Id:</label>
+          <input id="eventId" name="eventId" [(ngModel)]="selectedEvent.eventId" required #eventId="ngModel">
+          <div *ngIf="eventId.invalid && eventId.touched" class="text-danger">
+              <small *ngIf="eventId.errors?.['required']">Event ID is required.</small>
+          </div>
+      </div>
+      
+      <!-- Event Name -->
+      <div>
+          <label for="eventTitle">Event Name:</label>
+          <input id="eventTitle" name="eventTitle" [(ngModel)]="selectedEvent.eventTitle" required minlength="3" #eventTitle="ngModel">
+          <div *ngIf="eventTitle.invalid && eventTitle.touched" class="text-danger">
+              <small *ngIf="eventTitle.errors?.['required']">Event name is required.</small>
+              <small *ngIf="eventTitle.errors?.['minlength']">Event name must be at least 3 characters long.</small>
+          </div>
+      </div>
+  
+      <!-- Event Start Time -->
+      <div>
+          <label for="eventStartTime">Event Start Date and Time:</label>
+          <input id="eventStartTime" name="eventStartTime" type="datetime-local" [(ngModel)]="selectedEvent.eventStartTime" required #eventStartTime="ngModel">
+          <div *ngIf="eventStartTime.invalid && eventStartTime.touched" class="text-danger">
+              <small *ngIf="eventStartTime.errors?.['required']">Start Date and Time is required.</small>
+          </div>
+      </div>
+  
+      <!-- Event End Time -->
+      <div>
+          <label for="eventEndTime">Event End Date and Time:</label>
+          <input id="eventEndTime" name="eventEndTime" type="datetime-local" [(ngModel)]="selectedEvent.eventEndTime" required #eventEndTime="ngModel">
+          <div *ngIf="eventEndTime.invalid && eventEndTime.touched" class="text-danger">
+              <small *ngIf="eventEndTime.errors?.['required']">End Date and Time is required.</small>
+          </div>
+      </div>
+  
+      <!-- Event Location -->
+      <div>
+          <label for="eventLocation">Event Location:</label>
+          <input id="eventLocation" name="eventLocation" [(ngModel)]="selectedEvent.eventLocation" required #eventLocation="ngModel">
+          <div *ngIf="eventLocation.invalid && eventLocation.touched" class="text-danger">
+              <small *ngIf="eventLocation.errors?.['required']">Location is required.</small>
+          </div>
+      </div>
+  
+      <!-- Event Price -->
+      <div>
+          <label for="eventPrice">Event Price:</label>
+          <input id="eventPrice" name="eventPrice" [(ngModel)]="selectedEvent.eventPrice" required type="number" #eventPrice="ngModel">
+          <div *ngIf="eventPrice.invalid && eventPrice.touched" class="text-danger">
+              <small *ngIf="eventPrice.errors?.['required']">Event price is required.</small>
+              <small *ngIf="eventPrice.errors?.['pattern']">Please enter a valid price.</small>
+          </div>
+      </div>
+  
+      <!-- Event Type -->
+      <div>
+          <label for="eventType">Event Type:</label>
+          <input id="eventType" name="eventType" [(ngModel)]="selectedEvent.eventType" required #eventType="ngModel">
+          <div *ngIf="eventType.invalid && eventType.touched" class="text-danger">
+              <small *ngIf="eventType.errors?.['required']">Event type is required.</small>
+          </div>
+      </div>
+  
+      <!-- Total Number of Tickets -->
+      <div>
+          <label for="totalTickets">Total Number of Tickets:</label>
+          <input id="totalTickets" name="totalTickets" [(ngModel)]="selectedEvent.totalTickets" required type="number" min="1" #totalTickets="ngModel">
+          <div *ngIf="totalTickets.invalid && totalTickets.touched" class="text-danger">
+              <small *ngIf="totalTickets.errors?.['required']">Total tickets are required.</small>
+              <small *ngIf="totalTickets.errors?.['min']">Tickets must be at least 1.</small>
+          </div>
+      </div>
+  
+      <!-- Event Description -->
+      <div>
+          <label for="eventDescription">Event Description:</label>
+          <textarea id="eventDescription" name="eventDescription" [(ngModel)]="selectedEvent.eventDescription" required #eventDescription="ngModel"></textarea>
+          <div *ngIf="eventDescription.invalid && eventDescription.touched" class="text-danger">
+              <small *ngIf="eventDescription.errors?.['required']">Event description is required.</small>
+          </div>
+      </div>
+
+  
+      <!-- Submit Button -->
+      <div>
+          <button class="btn btn-primary" type="submit" [disabled]="addEventForm.form.invalid" (click)="update(selectedEvent)">Update</button>
+      </div>
+  </form>
+  
+</div>
+
+
+
+

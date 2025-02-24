@@ -1,0 +1,50 @@
+
+<h3>Admin Dashboard</h3><br><br>
+<app-admin-dashboard></app-admin-dashboard>
+<div class="card-deck">
+    
+    <div class="card" style="max-width: 18rem;" id="card1">
+      <div class="card-body" routerLink="admin/organizer">
+        <h5 class="card-title">Organizer</h5>
+        <img src="../../../../assets/admin/organiser.png" alt="">
+        <p class="card-text text-left">Numberof organizers: 50</p>
+        <p class="card-text text-left"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card" style="max-width: 18rem;" id="card2">
+      <div class="card-body" routerLink="admin/events">
+        <h5 class="card-title">Events</h5>
+        <img src="../../../../assets/admin/event.png" alt="">
+        <p class="card-text">Active Events: 20</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card" style="max-width: 18rem;" id="card3">
+      <div class="card-body" routerLink="admin/attendees">
+        <h5 class="card-title">Attendees</h5>
+        <img src="../../../../assets/admin/attendees.png" alt="">
+        <p class="card-text">Number of Attendees: 1000</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card" style="max-width: 18rem;" id="card4">
+        <div class="card-body" routerLink="/alerts">
+          <h5 class="card-title">Alerts</h5>
+          <p class="card-text">Number of alerts: 5</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+      
+      <div class="reports">
+        <h4>Reports</h4>
+        <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [type]="barChartType">
+        </canvas>
+      </div>
+      
+
+  </div>

@@ -1,0 +1,38 @@
+.nav-item{
+    margin: 5px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    
+}
+/* Initial transparent background for navbar */
+.navbar {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Change navbar background to white and text to dark on scroll */
+  .navbar.scrolled {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  /* Ensure text is dark when the navbar has white background */
+  .navbar.scrolled .navbar-brand, 
+  .navbar.scrolled .nav-link {
+    /* color:white */
+    color: black !important;
+    
+  }
+  
+  /* Optional: Style for navbar links on hover */
+  .navbar.scrolled .nav-link:hover {
+    color: white;
+    font-weight: bold;
+  }
+  
+  a:hover{
+    font-weight: bold;
+    color: white;
+  }

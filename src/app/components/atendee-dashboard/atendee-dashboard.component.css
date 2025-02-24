@@ -1,0 +1,82 @@
+/* Style for Navbar */
+.navbar {
+  background-color: #007bff; /* Darker Blue */
+  padding: 1rem 2rem; /* Increase padding */
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 20px;
+}
+
+.navbar-nav .nav-item a {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item a:hover {
+  color: #ffd700; /* Gold color for hover effect */
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* White icon color for toggler */
+}
+
+.navbar-light .navbar-toggler {
+  border-color: #fff; /* White border for the toggler */
+}
+
+/* Style for the active navbar link */
+.nav-item.active .nav-link {
+  color: orchid !important; /* Gold color for active link */
+  font-weight: bold;
+}
+
+/* Adding a slight shadow to the navbar */
+.navbar {
+  box-shadow: 0 4px 8px rgba(131, 94, 94, 0.2);
+}
+
+/* Styling the logout button */
+.btn-outline-light {
+  color: #fff !important;
+  border-color: #fff;
+  background-color: transparent;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: #8d8765; /* Gold color for hover effect */
+  color: #fff !important;
+  border-color: #535040;
+}
+
+/* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+.card {
+  height: 400px; /* Fixed height for card */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-img-top {
+  height: 250px; /* Fixed height for image */
+  /* Ensures the image covers the area without distorting */
+}

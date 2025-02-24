@@ -1,0 +1,128 @@
+<div>
+  <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
+    <b class="navbar-brand">Welcome User</b>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+      <button type="button" class="btn btn-danger" (click)="getEventsByAttendeeId()">view bookings</button>
+      <ul class="navbar-nav ml-3">
+        <!-- Logout Icon -->
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()" aria-label="Logout">
+            <i class="fas fa-sign-out-alt" style="font-size: 24px;" ></i> Logout
+          </a>
+        </li>
+        <!-- Profile Icon Dropdown -->
+      </ul>
+    </div>
+</nav>
+ 
+ 
+
+  <div class="row mt-4">
+    <!-- Filter Section (Left side) -->
+    <div class="col-md-3" style="position: sticky; top: 0;">
+      <div class="card">
+        <div class="card-header" style="background-color: #f8f9fa;">
+          <h5>Filter Events</h5>
+        </div>
+        <button type="button" class="btn btn-danger" (click)="getAllEvents()" *ngIf="showAll">ALL Events</button>
+        <div class="card-body">
+          <!-- Event Type Filter -->
+          <div class="form-group">
+            <label for="eventType">Event Type</label>
+            <input type="text" class="form-control" id="eventType" [(ngModel)]="e.eventType" placeholder="Enter Event Type">
+          </div>
+          <button class="btn btn-primary w-100" (click)="getEventsByType()">Search Events</button>
+
+          <!-- Event Date Filter -->
+<div class="form-group mt-3">
+  <label for="eventDate">Event Date</label>
+  <input 
+    type="datetime-local" 
+    class="form-control" 
+    id="eventStartTime" 
+    [(ngModel)]="e.eventStartTime" 
+    (ngModelChange)="getEventsByDate()"
+  >
+</div>
+<button class="btn btn-primary w-100" (click)="getEventsByDate()">Search by Date</button>
+
+
+
+
+          <!-- Event Location Filter -->
+          <div class="form-group mt-3">
+            <label for="eventLocation">Event Location</label>
+            <input type="text" class="form-control" id="eventLocation" [(ngModel)]="e.eventLocation" placeholder="Enter Event Location">
+          </div>
+          <button class="btn btn-primary w-100" (click)="getEventsByLocation()">Search by Location</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Cards Section (Right side) -->
+    <div class="col-md-9" style="max-height: 80vh; overflow-y: auto;">
+      <!-- Display error message if no events found or an error occurs -->
+      <div *ngIf="message" class="alert alert-danger">
+        {{ message }}
+      </div>
+
+      <!-- Default Events List (visible only when no filter is applied or all filters are cleared) -->
+      <div *ngIf="events1.length > 0 && events.length === 0">
+        <h3>All Events</h3>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4" *ngFor="let event of events1">
+            <div class="card" (click)="bookNow(event)" style="cursor: pointer;">
+              <div class="card-body">
+                <!-- Corrected src and alt bindings -->
+                <img class="card-img-top" [src]="getEventImagePath(event.eventType)" [alt]="event.eventType" style="object-fit: fill; height: 250px;">
+                <b class="text-center">{{ event.eventTitle }}</b>
+                <p><strong>Description:</strong> {{ event.eventDescription }}</p>
+                <p><strong>Price:</strong> ${{ event.eventPrice }}</p>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+    
+
+      <div *ngIf="events.length > 0">
+        <!-- Filtered Events List -->
+        <h3>Filtered Events</h3>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4" *ngFor="let event of events">
+            <div class="card" (click)="bookNow(event)" style="height: 45vh;cursor: pointer;">
+            
+              <div class="card-body" style="height: 500px;">
+                <!-- <img class="card-img-top" src="../../../assets/events/event-2.jpg" alt="Event Image"> -->
+                <img class="card-img-top" [src]="getEventImagePath(event.eventType)" [alt]="event.eventType">
+                <h3>{{event.eventTitle}}</h3>
+                <p><strong>Description:</strong> {{ event.eventDescription }}</p>
+                <p><strong>Price:</strong> ${{ event.eventPrice }}</p>
+                <p>{{ event.eventLocation }} | {{ event.eventStartTime | date: 'short' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container" *ngIf="isSuspended">
+
+  <div class="alert alert-danger ">
+
+    <p>Your Account is Suspended</p>
+  </div>
+
+</div>
+<!-- <footer class="bg-dark text-white text-center py-3 mt-5" >
+  <p>&copy; 2025 MyApp. All rights reserved.</p>
+</footer> -->

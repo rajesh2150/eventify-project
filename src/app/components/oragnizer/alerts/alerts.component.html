@@ -1,0 +1,10 @@
+<app-organizer-dashboard></app-organizer-dashboard>
+
+Alerts<br>{{toastMessage}}
+<div *ngIf="toastMessage" class="toast-notification">
+    {{ toastMessage }}
+</div>
+
+<div *ngIf="!toastMessage || toastMessage.length === 0" class="toast-notification">
+    No messages yet.
+  </div>

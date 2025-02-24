@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
+  <b class="navbar-brand">Welcome User</b>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+    <button type="button" class="btn btn-danger" (click)="getEventsByAttendeeId()">view bookings</button>
+    <ul class="navbar-nav ml-3">
+      <!-- Logout Icon -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="logout()" aria-label="Logout">
+          <i class="fas fa-sign-out-alt" style="font-size: 24px;" ></i> Logout
+        </a>
+      </li>
+      <!-- Profile Icon Dropdown -->
+    </ul>
+  </div>
+</nav>
+<button class="btn btn-secondary" (click)="backToHome()" style="position: fixed;left: 5px;top: 15%;"><</button>
+<div class="container mt-4">
+
+  <h3>Attendee's Booked Events</h3>
+
+  <ul class="list-group" *ngIf="attendeeEvents.length > 0; else noBookings">
+    <li *ngFor="let event of attendeeEvents" class="list-group-item">
+      {{ event.eventTitle }}
+      <button class="btn btn-primary btn-sm" (click)="feedback(event)">Feedback</button>
+    </li>
+  </ul>
+
+  <!-- No Bookings Message -->
+  <ng-template #noBookings>
+    <p class="text-danger mt-3">No bookings available.</p>
+  </ng-template>
+</div>
+
+<!-- Feedback Form -->
+<div class="container mt-5" *ngIf="showForm">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h4>Feedback Form for {{ selectedEvent?.eventTitle }}</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          <input
+            name="rating"
+            [(ngModel)]="feedbackData.rating"
+            type="number"
+            class="form-control"
+            id="rating"
+            placeholder="Enter Rating"
+            min="1"
+            max="5"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment</label>
+          <textarea
+            name="comment"
+            [(ngModel)]="feedbackData.comment"
+            class="form-control"
+            id="comment"
+            rows="3"
+            placeholder="Enter Comment"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="showForm = false">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

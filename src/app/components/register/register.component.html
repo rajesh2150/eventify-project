@@ -1,0 +1,90 @@
+<app-nav></app-nav>
+<div class="register-conatiner">
+    
+<div class="card shadow-lg p-4">
+    <h2 class="text-center mb-4">Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <!-- Name Field -->
+        <div class="form-group m-3">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter your name"
+                required />
+            <div *ngIf="name?.invalid && name?.touched" class="text-danger">
+                <small *ngIf="name?.errors?.['required']">Name is required.</small>
+                <small *ngIf="name?.errors?.['minlength']">Name must be at least 3 characters long.</small>
+            </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group m-3">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter your email"
+                required />
+            <div *ngIf="email?.invalid && email?.touched" class="text-danger">
+                <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+            </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group m-3">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password"
+                placeholder="Enter password" required />
+            <div *ngIf="password?.invalid && password?.touched" class="text-danger">
+                <small *ngIf="password?.errors?.['required']">Password is required.</small>
+                <small *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+            </div>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="form-group m-3">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword"
+                placeholder="Confirm password" required />
+            <div *ngIf="confirmPassword?.invalid && confirmPassword?.touched" class="text-danger">
+                <small *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required.</small>
+                <small *ngIf="registerForm.hasError('passwordMismatch')">Passwords do not match.</small>
+            </div>
+        </div>
+
+        <!-- Phone Number Field -->
+        <div class="form-group m-3">
+            <label for="contactNumber">Phone Number</label>
+            <input type="text" id="contactNumber" class="form-control" formControlName="contactNumber"
+                placeholder="Enter phone number" required />
+            <div *ngIf="contactNumber?.invalid && contactNumber?.touched" class="text-danger">
+                <small *ngIf="contactNumber?.errors?.['required']">Phone number is required.</small>
+                <small *ngIf="contactNumber?.errors?.['pattern']">Please enter a valid 10-digit phone number.</small>
+            </div>
+        </div>
+
+        <!-- Role Selection Dropdown -->
+        <div class="form-group m-3">
+            <label for="role">Role</label>
+            <select id="role" class="form-control" formControlName="role">
+                <option value="" disabled  selected>Select as</option>
+                <option value="attendee">Attendee</option>
+                <option value="organizer">Organizer</option>
+            </select>
+            <div *ngIf="role?.invalid && role?.touched" class="text-danger">
+                <small *ngIf="role?.errors?.['required']">Please select a role.</small>
+            </div>
+        </div>
+
+        <!-- Register Button -->
+        <button type="submit" class="btn btn-primary w-75 mx-5 " [disabled]="registerForm.invalid">Register</button>
+    </form>
+
+    <!-- Optional: Sign-in Link -->
+    <div class="text-center mt-3">
+        <small>Already have an account? <a href="/login">Sign In</a></small>
+    </div>
+</div>
+
+
+</div>
+
+
+<!-- Right Half: Text Content -->

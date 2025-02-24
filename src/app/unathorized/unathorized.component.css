@@ -1,0 +1,24 @@
+
+/* unauthorized.component.css */
+.unauthorized-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red color for the text */
+    font-size: 2rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border-radius: 8px;
+  }
+ 
+  .unauthorized-message {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red color */
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

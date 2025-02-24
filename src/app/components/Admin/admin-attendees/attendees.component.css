@@ -1,0 +1,18 @@
+thead{
+    background-color: rgba(85, 161, 248, 0.925);
+}
+.inactive{
+    background-color: dimgray;
+}
+.active{
+    background-color: white;
+}
+/* This ensures the button and search bar are aligned properly */
+.container .d-flex {
+    margin-bottom: 20px; /* Add some margin to separate from the content below */
+  }
+  
+  .form-inline input {
+    width: 300px; /* Control the width of the search bar */
+  }
+  

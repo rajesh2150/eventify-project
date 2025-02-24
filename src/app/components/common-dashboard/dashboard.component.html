@@ -1,0 +1,122 @@
+<app-nav></app-nav>
+
+
+
+
+<div class="mt-9 pt-">
+  <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="eventCarousel-lg"></div>
+    <div class="carousel-inner">
+      <div *ngFor="let event of events; let i = index" class="carousel-item carousel-div"
+        [class.active]="i === activeIndex">
+        <img [src]="event.image" class="d-block w-100" [alt]="event.title"
+          style="height: 80vh; width: 50vw; object-fit: cover;">
+        <div class="ele-heading-title">
+          <p>
+            Event ticketing made simple
+          </p>
+          <p class="sell"> Book Your tickets in 2 minutes</p>
+          <div class="action-buttons">
+            <button (click)="createEvent()" class="create-event">create event </button>
+            <button (click)="buynow()" class="buy-now btn btn-outline-secondary">Buy now </button>
+          </div>
+        </div>
+
+
+        <!-- <div class=" d-none d-md-block text-center">
+          <h5 style="color: rgb(191, 65, 51);">{{ event.title }}</h5>
+          <p style="color: rgb(198, 93, 54);">{{ event.description }}</p>
+        </div> -->
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" (click)="prevSlide()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" (click)="nextSlide()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center mt-5">
+
+    <h2 class="h2 sub-title-h2">Most preferred event ticketing company for your community organisation </h2>
+
+    <p class="sub-title">Eventify has been the trusted partner of thousands of community event organisers across the
+      World.
+      Our experience and expertise are at your disposal to assist in creating and growing your next community event.</p>
+  </div>
+
+  <section class="section" >
+    <div class="text-center">
+      <h2 class="benifits">See why World choose Eventify</h2>
+    </div>
+    <div class="benifit-container">
+      <img class="benifit-img" src="../../../assets/events/benifit-2.PNG" style="height: 300px;">
+      <div class="benifits-explanation">
+        <h2 class="benifit-title">Happy ticket buyers</h2>
+        <p>Easy Login/sign-up required.</p>
+        <p>Their data isn't shared with third parties.</p>
+        <p>We don’t promote other events to your audience.</p>
+      </div>
+    </div>
+  </section>
+
+ <section class="section" >
+
+    <div class="benifit-container">
+      <div class="benifits-explanation">
+        <h2 class="benifit-title">Affordable pricing</h2>
+        <p class="benifit-data">Eventify offers a low simple pricing, no tiers that reduce your features, no ticket limits, no hidden costs, no lock in contracts. Simply low-cost pricing to help you run your community events.</p>
+       
+      </div>
+      <img class="benifit-img2" src="../../../assets/events/benifit-3.PNG" style="height: 300px;">
+      
+    </div>
+  </section>
+
+
+  <div class="host-event-div">
+    <h2>DO YOU WANT TO HOST YOUR EVENTS?</h2>
+    <button (click)="createEvent()" class="btn btn-outline-secondary create-event">create event</button>
+  </div>
+
+  <section class="section" >
+  
+    <div class="benifit-container">
+      <img class="benifit-img" src="../../../assets/events/benifit-4.PNG" style="height: 300px;">
+      <div class="benifits-explanation">
+        <h2 class="benifit-title"> Support team you can reach</h2>
+        <p>All our customers have access to ongoing support via email</p>
+       
+        <p>We’re here to help you sell more tickets and have a successful event</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section" >
+
+    <div class="benifit-container">
+      <div class="benifits-explanation">
+        <h2 class="benifit-title">All features at no extra cost</h2>
+        <p class="benifit-data">Enjoy full access to our platform's capabilities, providing you with the tools you need to optimise and enhance your event experience.</p>
+       
+      </div>
+      <img class="benifit-img2" src="../../../assets/events/benifit-5.PNG" style="height: 300px;">
+      
+    </div>
+  </section>
+
+
+  
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <p>&copy; 2025 MyApp. All rights reserved.</p>
+</footer>

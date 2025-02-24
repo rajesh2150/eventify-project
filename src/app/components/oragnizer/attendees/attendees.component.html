@@ -1,0 +1,28 @@
+<app-organizer-dashboard></app-organizer-dashboard>
+<div class="container">
+    <h3>List of Attendees</h3><br>
+    <table class="table table-bordered text-center" >
+      <thead class="table-primary">
+
+
+          <tr>
+            <th > Id</th>
+            <th >Attendee Name</th>
+            <th >Attendee Email</th>
+            <th >Phone Number</th>
+        
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let attendee of attendeeData;let i=index; ">
+             <!-- <tr *ngFor="let attendee of attendeeData let j=i;" [class]="attendee.attendeeIsSuspended?'inactive':'active'"> -->
+              <td>{{i+1}}</td>
+              <td>{{attendee?.attendeeName}}</td>
+              <td>{{attendee?.attendeeEmail}}</td>
+              <td>{{attendee?.attendeePhoneNumber}}</td>
+          
+            <!-- <td>{{d[i].attendeeId}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>

@@ -1,0 +1,88 @@
+<!-- <nav class="navbar navbar-expand-lg">
+  <b class="navbar-brand">Event Dashboard</b>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto"> -->
+      <!-- Logout Icon -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#" (click)="logout()" aria-label="Logout">
+          <i class="fas fa-sign-out-alt" style="font-size: 24px;"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
+  <b class="navbar-brand">Welcome User</b>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+    <button type="button" class="btn btn-danger" (click)="getEventsByAttendeeId()">view bookings</button>
+    <ul class="navbar-nav ml-3">
+      <!-- Logout Icon -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="logout()" aria-label="Logout">
+          <i class="fas fa-sign-out-alt" style="font-size: 24px;" ></i> Logout
+        </a>
+      </li>
+      <!-- Profile Icon Dropdown -->
+    </ul>
+  </div>
+</nav>
+
+<div *ngIf="event" class="container mt-5">
+
+
+  <button class="btn btn-secondary tex-start" (click)="backToHome()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+
+  <!-- Event Title -->
+  <h2 class="text-center mb-4 text-dark font-weight-bold">{{ event.eventTitle |uppercase }}</h2>
+
+  <!-- Event Details Section -->
+  <div class="row">
+    <!-- Left Column for Image -->
+    <div class="col-md-6">
+      <div class="card shadow-lg h-100">
+        <!-- <img class="card-img-top" src="../../../assets/events/event-2.jpg" alt="Event Image" style="border-radius: 10px; object-fit: cover; height: 100%;"> -->
+        <img class="card-img-top" [src]="getEventImagePath(event.eventType)" [alt]="event.eventType" style="border-radius: 10px; object-fit: cover; height: 100%;">
+      </div>
+    </div>
+
+    <!-- Right Column for Event Information -->
+    <div class="col-md-6">
+      <div class="card shadow-lg h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-dark text-center">Event Details</h5>
+          <p><strong>Location:</strong> {{ event.eventLocation }}</p>
+          <p><strong>Description:</strong> {{ event.eventDescription }}</p>
+
+          <p><strong>Start Time:</strong> {{ event.eventStartTime | date: 'medium' }}</p>
+          <p><strong>End Time:</strong> {{ event.eventEndTime | date: 'medium' }}</p>
+          <p><strong>Price:</strong> ${{ event.eventPrice }}</p>
+          <p><strong>Total Tickets Available:</strong> {{ event.totalTickets }}</p>
+        </div>
+        <div class="text-start m-4">
+          <button class="btn btn-lg btn-danger shadow-md" (click)="bookNow(event)" [disabled]="isSuspended">Book Now</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
+<div class="container mt-4" *ngIf="isSuspended">
+
+  <div class="alert alert-danger ">
+
+    <p>Your Account is Suspended</p>
+  </div>
+
+</div>
+
+  <!-- Booking Button -->
+ 
+</div>

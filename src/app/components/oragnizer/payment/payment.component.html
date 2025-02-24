@@ -1,0 +1,15 @@
+<div class="container">
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="name">Pay to platform:</label>
+          <input id="name" formControlName="payToPlatform">
+          <div *ngIf="paymentForm.controls['payToPlatform'].hasError('invalid') && paymentForm.controls['payToPlatform'].touched">
+            Event payment is required.
+          </div>
+          <div *ngIf="paymentForm.controls['payToPlatform'].hasError('pattern')">
+            Enter valid Amount
+          </div>
+        </div>
+    <button class="btn btn-primary" [disabled]="paymentForm.invalid">Pay</button>
+</form>
+</div>

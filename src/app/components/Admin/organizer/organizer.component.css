@@ -1,0 +1,32 @@
+thead{
+    background-color: rgba(85, 161, 248, 0.925);
+}
+#trDisable {
+    background-color: dimgray;
+}
+.inactive{
+    background-color: dimgray;
+}
+.active{
+    background-color: white;
+}
+/* table{
+    border: solid 2px dodgerblue;
+}
+
+table th,table td{
+    border: solid 2px dodgerblue;
+} */
+/* .notification-messages {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.9;
+    z-index: 1000;
+    width: 200px;
+  } */

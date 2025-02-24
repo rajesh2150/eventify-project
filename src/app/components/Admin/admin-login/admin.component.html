@@ -1,0 +1,58 @@
+
+<app-nav></app-nav>
+    <div class="admin-container">
+        <div class="card shadow-lg p-4">
+          <h2 class="text-center mb-4">Admin Login</h2>
+          <p *ngIf="errorMessage">{{errorMessage}}</p>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="Enter your email"
+                required
+              />
+              <div *ngIf="email?.invalid && email?.touched" class="text-danger">
+                <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+              </div>
+            </div>
+  
+            <!-- Password Field -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Enter your password"
+                required
+              />
+              <div *ngIf="password?.invalid && password?.touched" class="text-danger">
+                <small *ngIf="password?.errors?.['required']">Password is required.</small>
+                <small *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+              </div>
+            </div>
+  
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="btn btn-primary w-100 mt-3"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
+          </form>
+  
+        
+          
+        </div>
+      </div>
+   
+  
+  

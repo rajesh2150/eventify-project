@@ -1,0 +1,35 @@
+.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .card {
+    width: 350px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
+  
+  .vh-100 {
+    min-height: 100vh;
+  }
+  
+  .fa-check-circle {
+    color: green;
+  }
+  

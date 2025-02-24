@@ -1,0 +1,88 @@
+<div class=" ">
+    <header>
+        <nav class="navbar navbar-light bg-light d-flex justify-content-end align-items-center" id="nav1">
+            <span >
+                <div  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="currentColor"
+                        class="bi bi-bell-fill mx-4  notification-icon" viewBox="0 0 16 16" (click)="alertfunction()">
+                        <path
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                    </svg> <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+                    <span class="notification-count">{{ notificationCount }}</span>
+                        <p *ngFor="let message of notificationMsg">{{message}}</p>
+                    
+
+                    <span >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="user-icon mr-3" (click)="profile($event)"
+                            viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                            <path
+                                d="M406.5 399.6C387.4 352.9 341.5 320 288 320l-64 0c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3l64 0c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z" />
+                        </svg>
+                    </span>
+                    <div *ngIf="isUserDetailsVisible" class="user-details-card">
+                        <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.name }}</h5>
+                            <p class="card-text">Email: {{ user.email }}</p>
+                            <p class="card-text">Phone: {{ user.phone }}</p><br>
+                            <button class="btn btn-info">Logout</button>
+                        </div>
+                        </div>
+                  </div> 
+            </div>
+            </span>
+
+        </nav>
+    </header>
+
+    <nav id="sidebar" class="bg-primary border-right text-light ">
+        <div class="sidebar-header text-center">
+            <h2>Eventify</h2>
+        </div>
+        <ul class="list-unstyled components">
+            <li class="active">
+                <h5>Dashboard</h5>
+            </li>
+            <li>
+                <a routerLink="/admin/organizer" routerLinkActive="active-link">Organizers</a>
+            </li>
+            <li>
+                <a routerLink="/admin/events" routerLinkActive="active-link">Events</a>
+            <li>
+                <a routerLink="/admin/attendees" routerLinkActive="active-link"> Attendee </a>
+            </li>
+            <li>
+                <a routerLink="/admin/reports" routerLinkActive="active-link"> Reports </a>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- <div>
+    <ul *ngIf="filteredAttendees.length > 0">
+        <li *ngFor="let attendee of filteredAttendees">
+          <p>{{ attendee.name }} ({{ attendee.email }}) - {{ attendee.phone }}</p>
+        </li>
+      </ul>
+    </div> -->
+    
+
+
+
+
+    
+     
+    
+
+
+
+
+
+
+    <div class="main-content">
+        <router-outlet>
+
+
+        </router-outlet>
+    </div>
+    
+</div>
