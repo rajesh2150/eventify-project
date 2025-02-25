@@ -111,7 +111,7 @@ public class AdminService {
     }
     
     
-    public Optional<Admin> loginAdmin(String name, String password) {
+    public Admin loginAdmin(String name, String password) {
     	
     	return adminRepository.findByAdminMailAndAdminPassword(name, password);
     }
@@ -127,9 +127,7 @@ public class AdminService {
     }
     
     
-    public boolean getAttendeeIsSuspendedById(int id) {
-    	return attendeeRepository.findAttendeeIsSuspendedById(id);
-    }
+    
     
     
 }

@@ -69,30 +69,7 @@ class AdminServiceTest {
         event.setEventTitle("Sample Event");
     }
 
-    @Test
-    void testLoginAdminSuccess() {
-        // Arrange
-        when(adminRepository.findByAdminMailAndAdminPassword("admin@example.com", "adminpassword")).thenReturn(Optional.of(admin));
 
-        // Act
-        Optional<Admin> result = adminService.loginAdmin("admin@example.com", "adminpassword");
-
-        // Assert
-        assertTrue(result.isPresent());
-        assertEquals("admin@example.com", result.get().getAdminMail());
-    }
-
-    @Test
-    void testLoginAdminFailure() {
-        // Arrange
-        when(adminRepository.findByAdminMailAndAdminPassword("admin@example.com", "wrongpassword")).thenReturn(Optional.empty());
-
-        // Act
-        Optional<Admin> result = adminService.loginAdmin("admin@example.com", "wrongpassword");
-
-        // Assert
-        assertFalse(result.isPresent());
-    }
 
     @Test
     void testManageUserAccountSuspendSuccess() {

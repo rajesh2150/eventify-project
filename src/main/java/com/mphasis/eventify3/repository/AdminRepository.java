@@ -14,7 +14,7 @@ import com.mphasis.eventify3.entity.Event;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	
-    Optional<Admin> findByAdminMailAndAdminPassword(String email,String password);
+    Admin findByAdminMailAndAdminPassword(String email,String password);
     
 //    @Query("SELECT e FROM Event e WHERE e.eventId IN (SELECT tb.event.eventId FROM TicketBooking tb WHERE tb.attendee.id = :id)")
 //	List<Event> findAllEventsByAttendeeId(@Param("id") int id);

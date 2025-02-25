@@ -12,7 +12,7 @@ import com.mphasis.eventify3.entity.Organizer;
 import com.mphasis.eventify3.entity.OrganizerRevenue;
 import com.mphasis.eventify3.entity.TicketBooking;
 
-@Repository
+//@Repository
 public interface OrganizerRepository extends JpaRepository<Organizer, Integer> {
 
 
@@ -38,6 +38,10 @@ public interface OrganizerRepository extends JpaRepository<Organizer, Integer> {
 	
 	@Query(value="select organizer_id from organizer where organizer_email = :email", nativeQuery = true)
 	Integer findOrganizerIdByEmail(@Param("email") String email);
+
+	@Query(value="select organizer_is_suspended from organizer where organizer_id= :id", nativeQuery = true)
+	boolean findOrganizerIsSuspendedById(@Param("id") int id);
+	
 
 	
 	

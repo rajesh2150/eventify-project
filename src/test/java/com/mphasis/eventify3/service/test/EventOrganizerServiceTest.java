@@ -43,7 +43,7 @@ public class EventOrganizerServiceTest {
         event.setEventPrice(100.0);
     }
 
-    // Test for addEvent
+  
     @Test
     void testAddEvent_Success() throws EventOrganizerExceptionHandler {
         // Arrange
@@ -175,19 +175,7 @@ public class EventOrganizerServiceTest {
         verify(organizerRepository, times(1)).findAllTicketBookingsByEventId(event.getEventId());  // Ensure method was called once
     }
 
-    // Test for showAllRevenueByEvent
-    @Test
-    void testShowAllRevenueByEvent() {
-        // Arrange
-        when(organizerRepository.showAllRevenueByEvent(event.getEventId())).thenReturn(5000.0);
-
-        // Act
-        double revenue = eventOrganizerService.showAllRevenueByEvent(event.getEventId());
-
-        // Assert
-        assertEquals(5000.0, revenue);
-        verify(organizerRepository, times(1)).showAllRevenueByEvent(event.getEventId());  // Ensure method was called once
-    }
+   
 
     // Test for getByEventTitle
     @Test

@@ -139,7 +139,9 @@ public class AdminController {
 	@GetMapping("/login/{email}/{password}")
 	public boolean adminLogin(@PathVariable String email, @PathVariable String password) {
 
-		Optional<Admin> isAdmin = adminService.loginAdmin(email, password);
+		Admin isAdmin = adminService.loginAdmin(email, password);
+		
+		System.out.println(email+" "+password);
 
 		if (isAdmin != null) {
 			return true;

@@ -106,4 +106,11 @@ public class EventOrganizerService {
 		return eventRepository.findAllAttendeeByOrganizerId(id);
 	}
 
+	
+	public boolean getOrganizerIsSuspendedById(int id) {
+		System.out.println(id);
+		// TODO Auto-generated method stub
+		return organizerRepository.findOrganizerIsSuspendedById(id);
+	}
+
 }

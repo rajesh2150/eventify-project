@@ -145,32 +145,6 @@ public class EventOrganizerController {
 
 	    
 
-//	@GetMapping("/event/{eventTitle}/image")
-//	public ResponseEntity<byte[]> getEventImage(@PathVariable String eventTitle) {
-//	    Event event = eventRepository.findByEventTitle(eventTitle);
-//
-//	    if (event == null || event.getImageData() == null) {
-//	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-//	    }
-//
-//	    HttpHeaders headers = new HttpHeaders();
-//	    headers.setContentType(MediaType.IMAGE_JPEG);
-//	    headers.setContentLength(event.getImageData().length);
-//
-//	    return new ResponseEntity<>(event.getImageData(), headers, HttpStatus.OK);
-//	}
-
-	
-//	@GetMapping("/{email}")
-//    public Map<String,Integer> getOrganizerIdByEmail(@PathVariable String email) {
-//    	int id= es.getOrganizerIdByEmail(email);
-//    	HashMap<String, Integer> respose=new HashMap<>();
-//    	respose.put("id", id);
-//    	
-//    	System.out.println(respose);
-//    	return respose;
-//    }
-	    
 	    @GetMapping("/{email}")
 	    public ResponseEntity<?> getOrganizerIdByEmail(@PathVariable String email) {
 	        int id = es.getOrganizerIdByEmail(email);
@@ -193,46 +167,7 @@ public class EventOrganizerController {
 	    
 	    
 	
-//	@PostMapping("/upload")
-//	public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile file) {
-//	    try {
-//	        // Compress the image
-//	        BufferedImage originalImage = ImageIO.read(file.getInputStream());
-//	        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//	        ImageIO.write(originalImage, "jpg", byteArrayOutputStream);
-//	        
-//	        byte[] compressedImageData = byteArrayOutputStream.toByteArray();
-//	        
-//	        // Save the compressed image data to the database
-//	        Event event = new Event();
-//	        event.setEventId(1); // Example random ID
-//	        event.setEventTitle("Tech Conference 2025");
-//	        event.setEventDescription("A conference showcasing the latest advancements in technology.");
-//	        event.setEventStartTime(LocalDateTime.of(2025, 3, 15, 9, 0));
-//	        event.setEventEndTime(LocalDateTime.of(2025, 3, 15, 17, 0));
-//	        event.setEventLocation("Pune, Maharashtra");
-//	        event.setEventPrice(199.99);
-//	        event.setEventType("Conference");
-//	        event.setTotalTickets(300);
-//	        event.setTotalReceivedAmount(50000.00);
-//	        event.setPayToPlatform(5000.00);
-//	        event.setImageData(compressedImageData);
-//
-//	        Organizer organizer = new Organizer(); // You need to initialize this based on your Organizer class
-//	        organizer.setOrganizerId(1); // Example random organizer ID
-////	        organizer.setName("John Doe");
-//	        event.setOrganizer(organizer);
-//	        
-//	        eventRepository.save(event);		
-//	        
-//	        System.out.println(file.getContentType());
-//	        
-//	        return ResponseEntity.ok("Image uploaded successfully with ID: " );
-//	    } catch (IOException e) {
-//	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload image");
-//	    }
-//	}
-	
+
 	@GetMapping("/eventsByOrganizerId/{id}")
     public ResponseEntity<?> getEventsByOrganizerId(@PathVariable("id") int oId ){
     	try {
@@ -295,29 +230,7 @@ public class EventOrganizerController {
 	
 	
 	
-	
-//	@GetMapping("/{id}/attendees")
-//	public List<Attendee> getAllAttendeeByOrganizerId(@PathVariable int id){
-//		
-//		List<Attendee> attendees = es.getAllAttendeeByOrganizerId(id);
-//		
-//		return attendees;
-//	}
-	
-//	@GetMapping("/{id}/attendees")
-//	public ResponseEntity<?> getAllAttendeeByOrganizerId(@PathVariable int id) {
-//	    List<Attendee> attendees = es.getAllAttendeeByOrganizerId(id);
-//	    
-//	    if (attendees != null && !attendees.isEmpty()) {
-//	        // Return the list of attendees with a 200 OK status if attendees are found
-//	        return new ResponseEntity<List<Attendee>>(attendees, HttpStatus.OK);
-//	    } else {
-//	        // Return a message with a 404 Not Found status if no attendees are found
-//	        return new ResponseEntity<String>("No attendees found for organizer with ID: " + id, HttpStatus.NOT_FOUND);
-//	    }
-//	}
 
-	// not working exception
 	
 	@GetMapping("/{id}/attendees")
 	public ResponseEntity<?> getAllAttendeeByOrganizerId(@PathVariable int id) {
@@ -336,6 +249,18 @@ public class EventOrganizerController {
 	    }
 	}
 
+	@GetMapping("/getorganizerissuspendedbyid/{id}")
+	   public ResponseEntity<?> getOrganizerIsSuspendedById(@PathVariable int id){
+		   
+		   boolean isSuspended = es.getOrganizerIsSuspendedById(id);
+		   
+		   if(isSuspended) {
+			   return new ResponseEntity<>(true,HttpStatus.OK);
+		   }
+		   else {
+			   return new ResponseEntity<>(false,HttpStatus.NOT_FOUND);
+		   }
+	   }
 
 
 
