@@ -1,6 +1,28 @@
 <app-organizer-dashboard></app-organizer-dashboard>
-<div class="container">
-    <button class="btn btn-primary" routerLink="/addevent">Add Events</button>
-    <button class="btn btn-primary mx-4" routerLink="/update">Update Event</button>
-    <button class="btn btn-primary" routerLink="/deleteEvents">Delete Events</button>
+<div class="container row " style="margin-left: 30%;">
+    <button class="btn btn-primary col-2" routerLink="/addevent">Add Events</button>
+    <button class="btn btn-primary mx-4 col-2" routerLink="/update">Update Event</button>
+    <button class="btn btn-primary col-2" routerLink="/deleteEvents">Delete Events</button>
+</div>
+
+
+
+
+<div class="container mt-5" style="display: flex;flex-direction:column;justify-content: center;align-items: center;">
+    <h3 class="text-center">All Events</h3>
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4" *ngFor="let event of eventData">
+        <div class="card" style="cursor: pointer;">
+          <div class="card-body">
+            <!-- Corrected src and alt bindings -->
+            <img class="card-img-top" [src]="getEventImagePath(event.eventType)" [alt]="event.eventType" style="object-fit: fill; height: 250px;">
+            <b class="text-center">{{ event.eventTitle }}</b>
+            <p><strong>Description:</strong> {{ event.eventDescription }}</p>
+            <p><strong>Price:</strong> ${{ event.eventPrice }}</p>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    
 </div>

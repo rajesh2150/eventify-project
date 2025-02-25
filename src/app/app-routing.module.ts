@@ -50,7 +50,7 @@ const routes: Routes = [
  
 
   { path: 'attendeedashboard', component:  AtendeeDashboardComponent, canActivate:[AuthgaurdService], data: { role: 'attendee' }},
-  { path: 'organizerdashboard', component: OrganizerDashboardComponent, canActivate:[AuthgaurdService], data: { role: 'organizer' } },
+  { path: 'organizerdashboard', component: ManageeventsComponent, canActivate:[AuthgaurdService], data: { role: 'organizer' } },
  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // {  path: 'eventname/:eventTitle/feedback', component: FeebackComponent }
@@ -107,12 +107,12 @@ const routes: Routes = [
 
   { path: 'admin', component: AdminComponent  },  //login
 
-{path:'admin/dashboard',component:AdminDashboardComponent},
+{path:'admin/dashboard',component:AdminDashboardComponent,canActivate:[AuthgaurdService], data: { role: 'admin' }},
 
-{path:'admin/organizer',component:OrganizerComponent},
-{path:'admin/events',component:AdminEventsComponent},
-{path:'admin/attendees',component:AdminAttendeesComponent},
-{path:'admin/reports',component:AdminReportsComponent}
+{path:'admin/organizer',component:OrganizerComponent,canActivate:[AuthgaurdService], data: { role: 'admin' }},
+{path:'admin/events',component:AdminEventsComponent,canActivate:[AuthgaurdService], data: { role: 'admin' }},
+{path:'admin/attendees',component:AdminAttendeesComponent,canActivate:[AuthgaurdService], data: { role: 'admin' }},
+{path:'admin/reports',component:AdminReportsComponent,canActivate:[AuthgaurdService], data: { role: 'admin' }}
 
 
   // {path:'admin/reports',component:AdminReportsComponent,},

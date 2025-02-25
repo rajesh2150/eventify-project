@@ -27,7 +27,7 @@ export class UpdateComponent {
         this.filteredAttendee=this.eventData;
       });
       let id = parseInt(sessionStorage.getItem("id"));
-      this.es.getEvents(id).subscribe(res=>console.log(res))
+      this.es.getEvents(id).subscribe(res=>this.eventData=res)
     }
 
     updateEvent(event:MyEvents):void{
@@ -55,4 +55,7 @@ export class UpdateComponent {
       }
     }
   
+    showUpdate:boolean=false;
+
+
 }

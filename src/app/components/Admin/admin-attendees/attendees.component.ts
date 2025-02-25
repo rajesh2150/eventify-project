@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Attendee } from 'src/app/model/Attendee';
 import { MyEvents } from 'src/app/model/MyEvents';
 import { AttendeesService } from 'src/app/services/attendees.service';
@@ -17,7 +18,7 @@ export class AdminAttendeesComponent implements OnInit{
   events:MyEvents[];
   searchQuery="";
   filteredAttendee;
-  constructor(private attendeeService: AttendeeserviceService,private as:AttendeesService) {
+  constructor(private attendeeService: AttendeeserviceService,private as:AttendeesService,private router:Router) {
     this.as.getAllAttendeeData().subscribe(data => {
       this.attendeeData = data;
       this.filteredAttendee=this.attendeeData;
@@ -106,6 +107,10 @@ export class AdminAttendeesComponent implements OnInit{
     event.stopPropagation();
   }
 
+
+  backToHome():void{
+    this.router.navigate(['/admin/dashboard'])
+  }
  
   // handleNotificationViewed():void{
   //   this.notificationCount=0;

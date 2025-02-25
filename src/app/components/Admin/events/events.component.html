@@ -1,7 +1,7 @@
-<div >
-
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+<div class="container">
+  <button class="btn btn-secondary" (click)="backToHome()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+  <form class="form-inline justify-content-end">
+    <input class="form-control w-50 mr-sm-2" type="text" placeholder="Search" aria-label="Search"
       name="searchQuery" [(ngModel)]="searchQuery" (keyup)="filterfunction()" (keydown)="filterfunction()">
     <!-- <span class="search-icon"> -->
       <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -12,7 +12,7 @@
 
     <h3>List of Events</h3><br>
     <table class="table table-bordered table-responsive text-center" >
-        <thead>
+        <thead class="table-info">
           <tr>
             <th >Event Title</th>
             <th >Event StartTme</th>
@@ -24,7 +24,7 @@
             <th>Amount Received</th>
             <th>Platform Payment</th>
             <th>Event Description</th>
-            <th  colspan="2">Action</th>
+
           </tr>
         </thead>
         <tbody >
@@ -39,12 +39,7 @@
             <td>{{d.totalReceivedAmount}}</td>
             <td>{{d.payToPlatform}}</td>
             <td>{{d.eventDescription}}</td>
-            <td>
-                <button class="btn btn-success" (click)="updatefunction(d)" [disabled]="false">Update</button>
-            </td>
-            <td>
-                <button class="btn btn-danger" (click)="cancelFunction(d)" [disabled]="d.isSuspended">Cancel</button>
-            </td>
+            
           </tr>
         </tbody>
       </table>

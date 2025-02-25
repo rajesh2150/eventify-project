@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { MyEvents } from 'src/app/model/MyEvents';
 import { Organizer } from 'src/app/model/Organizer';
 import { EventsService } from 'src/app/services/events.service';
+import { OrganizerService } from 'src/app/services/organizer.service';
 @Component({
   selector: 'app-addevent',
   templateUrl: './addevent.component.html',
@@ -15,20 +16,7 @@ import { EventsService } from 'src/app/services/events.service';
 export class AddeventComponent {
 
 
-  // addEventForm:FormGroup;
-  
-  // constructor(private form1:FormBuilder,private route:Router,private eventservice:EventsService){
-  //   this.addEventForm=this.form1.group({
-  //      eventTitle:new FormControl('',[Validators.required]),
-  //      eventStartTime:new FormControl('',[Validators.required]),
-  //      eventEndTime:new FormControl('',[Validators.required]),
-  //      eventLocation:new FormControl('',[Validators.required]),
-  //      eventPrice:new FormControl('',[Validators.required]),
-  //      eventType:new FormControl('',[Validators.required]),
-  //      totalTickets:new FormControl('',[Validators.required]),
-  //      eventDescription:new FormControl('',[Validators.required]),
-  //   })
-  // }
+
 
 
   event: MyEvents = {
@@ -47,26 +35,16 @@ export class AddeventComponent {
     organizerId:0
   };
   
-  constructor(private router: Router, private eventService: EventsService,private h:HttpClient) {
+  isSuspended:boolean=false;
+  constructor(private router: Router, private eventService: EventsService,private h:HttpClient,private organizerService:OrganizerService) {
+    
     console.log(sessionStorage.getItem("id"))
+
+    let id=parseInt(sessionStorage.getItem("id"));
+    this.organizerService.getOrganizerIsSuspended(id).subscribe(response=>this.isSuspended=response)
   }
 
-  // onSubmit(addEventForm: any): void {
-  //   if (addEventForm.valid) {
-  //     console.log('Event:', this.event);
-  //     var event2:MyEvents = this.event;
-  //     console.log(event2);
-  //     // this.h.post<any>("http://localhost:9091/api/organizer/addevent",event2).subscribe((r)=>{
-  //     //   console.log("HAppy birthday "+r);
-  //     // });
-  //     // this.eventService.addEvent(event2).subscribe(response => {
-  //     //   console.log('Event created successfully:', response);
-  //     //   this.event=response;
-  //     // });
-  //   }
-
-  // }
-
+ 
   showForm:boolean=true
   showPayment:boolean=false
   payToPlatform:number=200;
@@ -93,6 +71,8 @@ this.showForm=false
 
   amount: number = 100;
   transactionId: number = Math.floor(Math.random() * 1000000); // Random transaction ID
+
+  showSuceess:boolean=false;
 
   pay() {
     this.isProcessing = true;
@@ -124,6 +104,7 @@ this.showForm=false
     this.eventService.addEvent(this.event).subscribe((response)=>{
       console.log("payimg..")
       this.event=response;
+      this.showSuceess=true;
       console.log(this.event)
     })
   }

@@ -38,8 +38,8 @@ export class OrganizerComponent {
   suspendfunction(o:Organizer):void{
     // this.notification.addNotification();
     o.organizerIsSuspended=true;
-    this.service.updateOrganizerStatus(o[1],true).subscribe(response=>{
-     //console.log(o[0]);
+    this.service.updateOrganizerStatus(o[0],true).subscribe(response=>{
+     console.log(o[0]);
      const message=`Organizer ${o[1]} has been suspended.`;
      this.notificationMsg.push(message);
      this.notificationCount++;
@@ -59,7 +59,7 @@ export class OrganizerComponent {
 
   activefunction(o:Organizer):void{
     o.organizerIsSuspended=false;
-    this.service.updateOrganizerStatus(o[1],false).subscribe(response=>{
+    this.service.updateOrganizerStatus(o[0],false).subscribe(response=>{
       console.log('Organizer activated:',response);
     })
   }

@@ -62,10 +62,9 @@ export class AdminDashboardComponent {
 
   isUserDetailsVisible: boolean = false; // Toggle visibility of user details
   user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+123456789',
-    address: '1234 Main St, City, Country'
+    
+    email: sessionStorage.getItem("email"),
+   
   };
 
   profile(event: MouseEvent) {
@@ -126,4 +125,13 @@ export class AdminDashboardComponent {
       { data: [28, 48, 40, 19, 86], label: 'Revenue' }
     ]
   };
+
+
+  logout():void{
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("role");
+
+    this.route.navigate(['/dashboard'])
+  }
 }

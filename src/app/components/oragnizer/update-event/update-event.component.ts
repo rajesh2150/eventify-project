@@ -29,27 +29,18 @@ export class UpdateEventComponent implements OnInit{
     console.log("selectItem",this.selectedEvent);
     
   }
-//   searchedevent:Event[]=[];
-//   events:Event[]=[];
+
+
   
-//   loadEvents():void{
-//     this.alleventsservice.getEventData().subscribe((response)=>{
-//       this.events=response;
-//       //console.log(this.events);
-//   });
-// }
-
-  // searchFunction():void{
-  //     this.searchedevent=this.events.filter((data)=>data.eventTitle.toLowerCase().includes(this.searchtext.toLowerCase()));
-  //     this.event=this.searchedevent;
-  //     console.log(this.searchedevent);
-  // }
-
+showUpdate:boolean=true;
   update(event):void{
     console.log(event);
+    alert("Event is Updated")
+    this.showUpdate=false;
     this.updateService.updateEvent(event).subscribe((data)=>{
       this.selectedEvent=data;
       console.log("selectedEvent",this.selectedEvent);
+
       
     });
     this.toastService.sendMessage("Event was updated. Click here for more Details");

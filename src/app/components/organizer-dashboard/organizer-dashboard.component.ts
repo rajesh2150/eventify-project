@@ -22,7 +22,7 @@ export class OrganizerDashboardComponent {
   ticketBookings: TicketBooking[] = []; 
   eventRevenue: number = 0;
 
-
+isSuspended:boolean=false;
 
   constructor(private eventOrganizerService:OrganizerService,private http: HttpClient,private sanitizer: DomSanitizer,private route:Router,private service:EventOrganizerService) {
     let id :number;
@@ -41,8 +41,10 @@ export class OrganizerDashboardComponent {
       
     }
 
-    
     )
+
+    let oId=parseInt(sessionStorage.getItem("id"))
+    this.eventOrganizerService.getOrganizerIsSuspended(oId).subscribe(res=>this.isSuspended=res)
   }
 
   

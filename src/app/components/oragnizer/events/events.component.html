@@ -1,5 +1,5 @@
 <app-organizer-dashboard></app-organizer-dashboard>
-<div class="container">
+<div class="container" >
 
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
@@ -13,9 +13,9 @@
 
     <h3>List of Events</h3><br>
     <table class="table table-bordered table-responsive text-center" >
-        <thead>
+        <thead class="table-secondary">
           <tr>
-            <th>Event Id></th>
+            <th>Event Id</th>
             <th >Event Title</th>
             <th >Event StartTme</th>
             <th >Event EndTme</th>
@@ -29,7 +29,7 @@
           </tr>
         </thead>
         <tbody >
-          <tr *ngFor="let d of eventData">
+          <tr *ngFor="let d of filteredEventData">
             <td>{{d.eventId}}</td>
             <td>{{d.eventTitle}}</td>
             <td>{{d.eventStartTime}}</td>
@@ -48,7 +48,7 @@
       </table>
 
 
-      <div>
+      <div *ngIf="showAttendees">
         <table class="table table-bordered table-responsive text-center"  >
           <thead>
             <tr>

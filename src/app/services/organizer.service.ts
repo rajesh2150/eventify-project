@@ -68,4 +68,8 @@ export class OrganizerService {
       const eventsURL=`http://localhost:9091/eventify/admin/eventsByOrganizerId/${organizerId}`;
       return this.http.get<any[]>(eventsURL);
     }
+
+    getOrganizerIsSuspended(id:number):Observable<any>{
+      return this.http.get<any>("http://localhost:9091/eventify/organizer/getorganizerissuspendedbyid/"+id)
+    }
 }

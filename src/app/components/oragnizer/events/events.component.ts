@@ -32,7 +32,7 @@ export class EventsComponent {
   filterfunction(): void {
     if (this.searchQuery.trim() === '') {
 
-      this.filteredEventData = [...this.eventData]; // If no search query, show all events
+      this.filteredEventData = this.eventData; 
       console.log(this.filteredEventData);
     } else {
       this.filteredEventData = this.eventData.filter(event =>
@@ -48,7 +48,7 @@ export class EventsComponent {
   showAttendees:boolean=false
 
   attendeesList(e:MyEvents):void{
-   
+   this.showAttendees=true
     this.service.getAllAttendeesByEventId(e.eventId).subscribe((attendee)=>{
       this.attendees=attendee;
       console.log(attendee)

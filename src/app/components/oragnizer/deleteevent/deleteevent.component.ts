@@ -37,7 +37,10 @@ export class DeleteeventComponent {
     });
     alert("Event is Deleted");
     this.deleteMessage="Event is Deleted"
-    window.location.reload()
+    
+    setTimeout(()=>{
+      window.location.reload()
+    },2000)
 
     
   }

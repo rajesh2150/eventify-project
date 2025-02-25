@@ -1,8 +1,8 @@
 <app-organizer-dashboard></app-organizer-dashboard>
-<h1> Delete Event</h1><br>
+
 <div class="container">
 
-  <form class="form-inline">
+  <form class="form-inline" style="width: 25vw;">
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
       name="searchQuery" [(ngModel)]="searchQuery" (keyup)="filterfunction()" (keydown)="filterfunction()">
     <span class="search-icon">
@@ -13,8 +13,8 @@
   </form><br><br>
 
     <h3>List of Events</h3><br>
-    <table class="table table-bordered table-responsive text-center" >
-        <thead>
+    <table class="table table-bordered table-responsive text-center " *ngIf="eventData">
+        <thead class="table-secondary">
           <tr>
             <th >Event Title</th>
             <th >Event StartTme</th>
@@ -55,3 +55,7 @@
     </div>
   </div>
     
+
+  <div class="alert alert-danger mx-auto" *ngIf="!eventData" style="width: 20vw;">
+    <h3>No Events </h3>
+  </div>

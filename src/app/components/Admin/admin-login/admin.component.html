@@ -3,7 +3,7 @@
     <div class="admin-container">
         <div class="card shadow-lg p-4">
           <h2 class="text-center mb-4">Admin Login</h2>
-          <p *ngIf="errorMessage">{{errorMessage}}</p>
+          <p *ngIf="errorMessage" class="text-danger">{{errorMessage}}</p>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <!-- Email Field -->
             <div class="form-group">

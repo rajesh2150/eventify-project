@@ -4,7 +4,7 @@
     <form #addEventForm="ngForm" *ngIf="showForm">
       <div>
         <label for="eventTitle">Event Name:</label>
-        <input id="eventTitle" name="eventTitle" [(ngModel)]="event.eventTitle" required>
+        <input id="eventTitle" name="eventTitle" [(ngModel)]="event.eventTitle" required placeholder="Enter Event Title">
         <div *ngIf="addEventForm.form.controls['eventTitle']?.invalid && addEventForm.form.controls['eventTitle']?.touched">
           Event Name is required.
         </div>
@@ -12,7 +12,7 @@
   
       <div>
         <label for="eventStartTime">Event Start Date and Time:</label>
-        <input id="eventStartTime" name="eventStartTime" type="datetime-local" [(ngModel)]="event.eventStartTime" required>
+        <input id="eventStartTime" name="eventStartTime" type="datetime-local" [(ngModel)]="event.eventStartTime" required placeholder="Enter Start Time">
         <div *ngIf="addEventForm.form.controls['eventStartTime']?.invalid && addEventForm.form.controls['eventStartTime']?.touched">
           Event Start Date and Time is required.
         </div>
@@ -28,7 +28,7 @@
   
       <div>
         <label for="eventLocation">Event Location:</label>
-        <input id="eventLocation" name="eventLocation" [(ngModel)]="event.eventLocation" required>
+        <input id="eventLocation" name="eventLocation" [(ngModel)]="event.eventLocation" required placeholder="Enter Event Location">
         <div *ngIf="addEventForm.form.controls['eventLocation']?.invalid && addEventForm.form.controls['eventLocation']?.touched">
           Event Location is required.
         </div>
@@ -36,7 +36,7 @@
   
       <div>
         <label for="eventPrice">Event Price:</label>
-        <input id="eventPrice" name="eventPrice" [(ngModel)]="event.eventPrice" required>
+        <input id="eventPrice" name="eventPrice" [(ngModel)]="event.eventPrice" required placeholder="Enter Price">
         <div *ngIf="addEventForm.form.controls['eventPrice']?.invalid && addEventForm.form.controls['eventPrice']?.touched">
           Event Price is required.
         </div>
@@ -79,7 +79,7 @@
   
       <button class="btn btn-primary" type="submit" [disabled]="addEventForm.form.invalid">Submit</button>
     </div> -->
-    <button  (click)="next()">next</button>
+    <button  (click)="next()" [disabled]="addEventForm.form.invalid|| isSuspended" >next</button>
   </form>
 
   <div class="d-flex justify-content-center align-items-center vh-100">
@@ -104,7 +104,9 @@
       <i class="fas fa-check-circle text-success fa-3x"></i>
       <h4 class="text-success mt-2">Payment Successful!</h4>
       <p class="text-muted">Transaction ID: <strong>{{ transactionId }}</strong></p>
+      <h4 class="text-success mt-2">Event is Added </h4>
     </div>
   </div>
   
-  
+ 
+</div>

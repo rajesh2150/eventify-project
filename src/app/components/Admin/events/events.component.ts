@@ -52,4 +52,8 @@ export class AdminEventsComponent implements OnInit{
     }
   }
 
+  backToHome():void{
+    this.route.navigate(['/admin/dashboard'])
+  }
+
 }
